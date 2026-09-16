@@ -269,7 +269,7 @@ export default function Home() {
             </div>
             
             <div className="overflow-y-auto flex-1 p-6 bg-gray-950/30">
-              <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
                 {wlArray.map(ticker => {
                   const tickerData = baseScreenerData.filter(t => t.ticker === ticker);
                   return (
