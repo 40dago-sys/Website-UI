@@ -53,7 +53,7 @@ export default function Home() {
 
     const connectWSS = () => {
       const protocol = window.location.protocol === "https:" ? "wss://" : "ws://";
-      ws = new WebSocket(`${protocol}${window.location.host}/aws/api/ws/tape`);
+      ws = new WebSocket(`wss://13.214.202.126.nip.io/api/ws/tape`);
       
       ws.onopen = () => setStatusAWS("WSS Live Connected 🟢");
       ws.onerror = () => setStatusAWS("WSS Error 🔴");
@@ -79,9 +79,9 @@ export default function Home() {
     connectWSS();
 
     const fetchOthers = () => {
-      fetch(`/aws/api/whales?min_value=${whaleLimit}&limit=200`).then(r => r.json()).then(d => setWhales(d || []));
-      fetch(`/aws/api/radar?timeframe=${radarTimeframe}`).then(r => r.json()).then(d => setRadar(d || []));
-      fetch("/aws/api/logs").then(r => r.json()).then(d => setLogs(d || []));
+      fetch(`https://13.214.202.126.nip.io/api/whales?min_value=${whaleLimit}&limit=200`).then(r => r.json()).then(d => setWhales(d || []));
+      fetch(`https://13.214.202.126.nip.io/api/radar?timeframe=${radarTimeframe}`).then(r => r.json()).then(d => setRadar(d || []));
+      fetch(`https://13.214.202.126.nip.io/api/logs`).then(r => r.json()).then(d => setLogs(d || []));
     };
 
     fetchOthers();
